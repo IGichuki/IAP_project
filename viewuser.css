@@ -1,0 +1,47 @@
+body{
+		margin-top: 50px;
+		padding: 0;
+		font-family: montserrat;
+		background-color: mediumpurple;
+	    border:  solid black;
+		
+		font-size: 15px;
+		
+		
+	}
+	*{
+		padding:0px;
+		margin: 10px;
+
+	
+		list-style-type: none;
+		text-decoration:none ;
+		font-family: sans-serif;
+
+	}
+	table{
+		text-align: center;
+		
+	}
+	.user{
+		position: absolute;
+		top: 30%;
+		left: 35%;
+		transform: translate(-50px,-50px);
+		width: 400px;
+		color: white;
+
+		
+	}
+	.img{
+		height: 100px;
+		width: 100px;
+	}
+	#image{
+		height: 100px;
+		width: 100px;
+	}
+	td{
+		display: table-cell;
+		vertical-align: inherit;
+	}

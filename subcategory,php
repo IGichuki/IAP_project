@@ -1,0 +1,96 @@
+<?php 
+
+ <div class="main-content">
+     
+     <div class="wrapper">
+     <h1>ADD SUBCATEGORY</h1>
+
+     <br><br>
+
+     <?php 
+     if(isset($_SESSION['add']))
+     {
+         echo $_SESSION['add'];
+         unset($_SESSION['add']);
+     }      
+     ?>
+<br><br>
+     <!-----add category form------>
+     <form action="" method="post">
+
+     <table class="tbl-30">
+         <tr>
+             <td>Subcategory Name:</td>
+             <td>
+                 <input type="text" id="SubcategoryName" name="SubcategoryName">
+             </td>
+         </tr>
+
+         <tr>
+             <td>Category:</td>
+             <td>
+                 <input type="text" id="CategoryId" name="CategoryId">
+             </td>
+         </tr>
+
+         <tr>
+             <td>Active: </td>
+             <td>
+                 <input type="radio" id="Active" name="Active" value="Yes">Yes
+                 <input type="radio" id="Active" name="Active" value="No">No
+             </td>
+         </tr>
+
+         <tr>
+             <td coolspan="2">
+                 <input type="submit" name="submit" value="Add Subcategory" class="btn-primary">
+             </td>
+         </tr>
+     </table>
+
+     </form>
+
+     <!-------------php--------->
+     <?php
+    
+//check if submit btn is clicked          
+          if(isset($_POST['submit']))
+          {
+           //echo"clicked";  
+           $SubcategoryName=$_POST['SubcategoryName'];
+           $CategoryId=$_POST['CategoryId'];
+//check if the radio input is selected
+           if(isset($_POST['Active']))
+           {
+               $Active=$_POST['Active'];
+           }
+           else
+           {
+               $Active="No";
+           }
+
+//SQL to insert data
+$sql="INSERT INTO `productsubcategory` (`SubcategoryName`,`CategoryId`,`Active`)
+VALUES('$SubcategoryName','$CategoryId','$Active')";
+
+
+if(mysqli_query($conn,$sql)){
+    $_SESSION['add']="new record created succesfully" ;
+    header('location:'.'manage-category.php');
+}else{
+    echo"Error: ".mysqli_error($conn);
+    $_SESSION['add']="Error" ;
+    header('location:'.'add-subcategory.php');
+}
+
+          }
+     ?>
+
+
+
+     </div>
+     
+ </div>
+ ?>
+
+ 
